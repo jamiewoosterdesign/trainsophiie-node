@@ -4,6 +4,7 @@ import {
     Headset, Mail, Users, Wrench, ListChecks, ArrowRightLeft,
     Book, Settings, HelpCircle, Bot, ShieldAlert
 } from 'lucide-react';
+import { SophiieLogo } from '@/components/icons/SophiieLogo';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 
@@ -47,20 +48,21 @@ export default function Sidebar() {
         <>
             {/* Tier 1 Sidebar */}
             <aside className="w-[72px] bg-slate-950 flex flex-col items-center py-6 z-30 flex-shrink-0 shadow-xl text-white">
-                <div className="mb-10 text-2xl opacity-90 hover:opacity-100 cursor-pointer">
-                    <Headset className="w-8 h-8" />
+                <div className="mb-10 text-2xl opacity-90 hover:opacity-100 cursor-pointer text-white">
+                    <SophiieLogo className="w-8 h-8" />
                 </div>
                 <nav className="flex-1 w-full flex flex-col gap-6 px-2 items-center">
                     <NavIcon icon={<Mail />} />
-                    <NavIcon icon={<Users />} active={currentPath === 'staff'} onClick={() => navigate('/staff')} />
-                    <NavIcon icon={<Wrench />} active={currentPath === 'services'} onClick={() => navigate('/services')} />
-                    <NavIcon icon={<ListChecks />} active={currentPath === 'scenarios'} onClick={() => navigate('/scenarios')} />
-                    <NavIcon icon={<ArrowRightLeft />} active={currentPath === 'transfers'} onClick={() => navigate('/transfers')} />
-                    <NavIcon icon={<Book />} active={currentPath === 'knowledge'} onClick={() => navigate('/knowledge')} />
+                    <NavIcon icon={<Users />} onClick={() => navigate('/staff')} />
+                    <NavIcon icon={<Wrench />} onClick={() => navigate('/services')} />
+                    <NavIcon icon={<ListChecks />} onClick={() => navigate('/scenarios')} />
+                    <NavIcon icon={<ArrowRightLeft />} onClick={() => navigate('/transfers')} />
+                    <NavIcon icon={<Book />} onClick={() => navigate('/knowledge')} />
 
                     <div className="mt-auto flex flex-col gap-6 items-center">
-                        <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-blue-400">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-900/20 relative">
                             <Bot className="w-6 h-6" />
+                            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-white rounded-r-md -ml-3" />
                         </div>
                         <NavIcon icon={<Settings />} />
                         <NavIcon icon={<HelpCircle />} />

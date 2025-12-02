@@ -119,7 +119,7 @@ export default function WizardFormContent({ mode, step, formData, onChange, acti
                 <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                     <div>
                         <Label className="mb-3 block">Pricing Mode</Label>
-                        <div className="flex gap-2 mb-4 overflow-x-auto pb-1">
+                        <div className="flex gap-2 mb-4 overflow-x-auto pb-2 p-1 -mx-1">
                             {['fixed', 'hourly', 'range', 'na'].map(m => (
                                 <div key={m}
                                     onClick={() => onChange('priceMode', m)}
@@ -192,24 +192,22 @@ export default function WizardFormContent({ mode, step, formData, onChange, acti
                 <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                     <div>
                         <Label className="mb-3 block">Outcome</Label>
-                        <div className="grid grid-cols-2 gap-3 mb-6">
+                        <div className="grid grid-cols-2 gap-4 mb-6">
                             {[
-                                { id: 'collect', label: 'Collect Info', desc: 'Gather info & notify team', icon: <ClipboardList className="w-5 h-5" /> },
-                                { id: 'transfer', label: 'Transfer', desc: 'Connect to staff member', icon: <PhoneForwarded className="w-5 h-5" /> },
-                                { id: 'booking', label: 'Booking', desc: 'Schedule appointment', icon: <Calendar className="w-5 h-5" /> },
-                                { id: 'send_info', label: 'Send Info', desc: 'SMS/Email details', icon: <Mail className="w-5 h-5" /> }
+                                { id: 'collect', label: 'Collect Info', desc: 'Gather info & notify team', icon: ClipboardList, color: 'text-orange-500' },
+                                { id: 'transfer', label: 'Transfer', desc: 'Connect to staff member', icon: PhoneForwarded, color: 'text-blue-500' },
+                                { id: 'booking', label: 'Booking', desc: 'Schedule appointment', icon: Calendar, color: 'text-purple-500' },
+                                { id: 'send_info', label: 'Send Info', desc: 'SMS/Email details', icon: Mail, color: 'text-green-500' }
                             ].map(opt => (
                                 <div key={opt.id}
                                     onClick={() => onChange('serviceOutcome', opt.id)}
-                                    className={`border rounded-xl p-4 cursor-pointer transition-all flex flex-col items-center text-center gap-2 ${formData.serviceOutcome === opt.id ? 'bg-blue-50 border-blue-500 ring-1 ring-blue-500' : 'hover:bg-slate-50 border-slate-200'}`}
+                                    className={`cursor-pointer p-4 rounded-xl border-2 flex flex-col items-center text-center transition-all ${formData.serviceOutcome === opt.id ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'}`}
                                 >
-                                    <div className={`p-2 rounded-full ${formData.serviceOutcome === opt.id ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-500'}`}>
-                                        {opt.icon}
+                                    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mb-2 shadow-sm">
+                                        <opt.icon className={`w-5 h-5 ${opt.color}`} />
                                     </div>
-                                    <div>
-                                        <div className={`font-bold text-sm ${formData.serviceOutcome === opt.id ? 'text-blue-700' : 'text-slate-900'}`}>{opt.label}</div>
-                                        <div className="text-xs text-slate-500">{opt.desc}</div>
-                                    </div>
+                                    <div className={`font-bold text-sm ${formData.serviceOutcome === opt.id ? 'text-blue-700' : 'text-slate-900'}`}>{opt.label}</div>
+                                    <div className="text-xs text-slate-500 mt-1">{opt.desc}</div>
                                 </div>
                             ))}
                         </div>
